@@ -1,5 +1,7 @@
 package br.com.tweteroo.api.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,10 @@ public class TweetService {
 		int pageSize = 5;
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.DESC, "id"));
         return repository.findAll(pageRequest);
+	}
+	
+	public List<Tweet> findByUsername(String username) {
+		return repository.findByUsername(username);
 	}
 	
 	public void createTweet(@Valid TweetDTO req) {
