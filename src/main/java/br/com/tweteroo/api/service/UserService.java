@@ -1,5 +1,6 @@
 package br.com.tweteroo.api.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,16 @@ import jakarta.validation.Valid;
 public class UserService {
 	
 	@Autowired
-	private UserRepository repository;
+	private UserRepository userRepository;
 
+	@Transactional
 	public void signUp(@Valid UserDTO req) {
-		repository.save(new User(req));
+		System.out.println("aqui");
+		User user = new User();
+		user.setUsername(req.username());
+		user.setAvatar(req.avatar());
+
+		userRepository.save(user);
 		
 	}
 

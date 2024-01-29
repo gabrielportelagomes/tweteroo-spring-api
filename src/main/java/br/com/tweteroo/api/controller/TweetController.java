@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,6 @@ import br.com.tweteroo.api.service.TweetService;
 import jakarta.validation.Valid;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/tweets")
 public class TweetController {
 
@@ -33,9 +31,9 @@ public class TweetController {
 		return service.findAll(page);
 	}
 	
-	@GetMapping("/{username}")
-	public List<Tweet> getTweetsByUsername(@PathVariable String username) {
-		return service.findByUsername(username);
+	@GetMapping("/{userId}")
+	public List<Tweet> getTweetsByUserId(@PathVariable long userId) {
+		return service.findByUserId(userId);
 	}
 
 	@PostMapping

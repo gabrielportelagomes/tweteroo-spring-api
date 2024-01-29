@@ -14,7 +14,6 @@ import br.com.tweteroo.api.service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/auth/sign-up")
 public class UserController {
 
